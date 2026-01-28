@@ -13,7 +13,7 @@ public class CORSGlobalConnectors {
         config.setAllowCredentials(true);
         
         // Replace * with your actual frontend URL
-        config.addAllowedOrigin("https://darshan-11-create.github.io");
+        config.addAllowedOrigin("https://darshan-11-create.github.io/LibraryManagement");
         
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
