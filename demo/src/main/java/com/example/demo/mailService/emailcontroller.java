@@ -19,7 +19,7 @@ public class emailcontroller {
      int otp=0;
    @GetMapping("/sendOtp")
    @Async
-    public boolean sendOtp(@RequestParam String user){
+    public String sendOtp(@RequestParam String user){
        try {
            otp=(int)(Math.random()*900000)+100000;
            String sotp=otp+"";
@@ -27,9 +27,9 @@ public class emailcontroller {
            emailService.sendMail(user, "From xyz Library", sotp);
        }
        catch(Exception e){
-           return false;
+           return e.getMessage();
        }
-       return true;
+       return "true";
    }
    @GetMapping("/validOtp")
     public boolean validotp(@RequestParam String user,@RequestParam int otpNumber){
