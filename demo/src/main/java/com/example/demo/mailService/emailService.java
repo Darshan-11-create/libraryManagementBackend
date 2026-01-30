@@ -1,9 +1,15 @@
 package com.example.demo.mailService;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import com.sendgrid.Content;
+import com.sendgrid.Email;
+import com.sendgrid.Mail;
+import com.sendgrid.Method;
+import com.sendgrid.Request;
+import com.sendgrid.Response;
+import com.sendgrid.SendGrid;
 
 @Service
 public class emailService {
