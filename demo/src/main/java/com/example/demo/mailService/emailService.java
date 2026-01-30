@@ -8,12 +8,28 @@ import org.springframework.stereotype.Service;
 @Service
 public class emailService {
    @Autowired
-    private JavaMailSender mailSender;
-   public void sendMail(String to,String subject,String body){
-       SimpleMailMessage message=new SimpleMailMessage();
-       message.setTo(to);
-       message.setSubject(subject);
-       message.setText(body);
-       mailSender.send(message);
-   }
+    @Value("${sendgrid.api.key}")
+    private String sendGridApiKey;
+
+    @Value("${sendgrid.from.email}")
+    private String fromEmail;
+
+    public void sendEmail(String to, String subject, String body) {
+        Email from = new Email(fromEmail);
+        Email toEmail = new Email(to);
+        Content content = new Content("text/plain", body);
+        Mail mail = new Mail(from, subject, toEmail, content);
+
+        SendGrid sg = new SendGrid(sendGridApiKey);
+        Request request = new Request();
+
+        try {
+            request.setMethod(Method.POST);
+            request.setEndpoint("mail/send");
+            request.setBody(mail.build());
+            sg.api(request);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
