@@ -14,7 +14,7 @@ public class emailService {
     @Value("${sendgrid.from.email}")
     private String fromEmail;
 
-    public void sendEmail(String to, String subject, String body) {
+    public void sendmail(String to, String subject, String body) {
         Email from = new Email(fromEmail);
         Email toEmail = new Email(to);
         Content content = new Content("text/plain", body);
