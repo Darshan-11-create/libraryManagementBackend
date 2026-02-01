@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -36,7 +38,7 @@ public class BookController implements BookService{
     @Transactional
     @PostMapping("/PurchaseBook")
     public boolean purchaseBook(@RequestParam int id,@RequestParam int cust_id){
-         Book b1=bookRepository.findById(id);
+         Book b1=bookRepository.BuyOrRent(id);
         Customer c=customerRepository.findById(cust_id);
 //        Book pbook=null;
         try{
@@ -66,7 +68,7 @@ public class BookController implements BookService{
     @PostMapping("/RentBook")
     public boolean RentBook(@RequestParam int id,@RequestParam int cust_id){
         Customer c=customerRepository.findById(cust_id);
-       Book b1=bookRepository.findById(id);
+       Book b1=bookRepository.BuyOrRent(id);
         Book pbook=null;
         try{
 
