@@ -33,6 +33,7 @@ public class BookController implements BookService{
     public List<Book> SearchBooks(@RequestParam String name){
         return bookRepository.findByBookNameContainingIgnoreCase(name);
     }
+    @Transactional
     @PostMapping("/PurchaseBook")
     public boolean purchaseBook(@RequestParam int id,@RequestParam int cust_id){
          Book b1=bookRepository.findById(id);
@@ -61,6 +62,7 @@ public class BookController implements BookService{
         emailService.sendMail(c.getEmail(), "Purchase Book",b1.toString());
         return true;
     }
+    @Transactional
     @PostMapping("/RentBook")
     public boolean RentBook(@RequestParam int id,@RequestParam int cust_id){
         Customer c=customerRepository.findById(cust_id);
