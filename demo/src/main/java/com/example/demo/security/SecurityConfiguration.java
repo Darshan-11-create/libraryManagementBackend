@@ -33,7 +33,6 @@ public class SecurityConfiguration {
                        .requestMatchers("/login").permitAll()
                        .requestMatchers("/AvailableBooks").permitAll()
                        .requestMatchers("/SearchBooks").permitAll()
-                       .requestMatchers("/manager/**").permitAll()
                        .requestMatchers("/email/**").permitAll()
                        .requestMatchers("/customer/**").permitAll()
                        .anyRequest().authenticated()
