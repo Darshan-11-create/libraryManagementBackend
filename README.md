@@ -11,6 +11,7 @@ The backend of the Library Management System built with Spring Boot and MySQL. I
 - 🔄 Issue and return book endpoints
 - 🔍 Search functionality by title, author, or category
 - 📊 Borrowing history and records
+- 🛒 Purchase books online
 - 🔐 Admin authentication
 
 ---
